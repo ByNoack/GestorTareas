@@ -56,13 +56,18 @@
             this.comboBoxPrioridad = new System.Windows.Forms.ComboBox();
             this.comboBoxEstado = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.buttonAceptar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAgregar = new System.Windows.Forms.Button();
+            this.buttonBorrarTarea = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBoxUsuarioLogged = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxCorreoLogged = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.textBoxBusqueda = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBoxMetodosOrd = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBoxRegister.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -226,8 +231,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.buttonAceptar);
+            this.groupBox1.Controls.Add(this.comboBoxMetodosOrd);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.textBoxBusqueda);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.buttonBorrarTarea);
+            this.groupBox1.Controls.Add(this.buttonAgregar);
             this.groupBox1.Controls.Add(this.comboBoxEstado);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.comboBoxPrioridad);
@@ -243,7 +252,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(364, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(714, 641);
+            this.groupBox1.Size = new System.Drawing.Size(714, 691);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tareas";
@@ -252,9 +261,9 @@
             // ListaTareas
             // 
             this.ListaTareas.FormattingEnabled = true;
-            this.ListaTareas.Location = new System.Drawing.Point(418, 27);
+            this.ListaTareas.Location = new System.Drawing.Point(418, 119);
             this.ListaTareas.Name = "ListaTareas";
-            this.ListaTareas.Size = new System.Drawing.Size(281, 533);
+            this.ListaTareas.Size = new System.Drawing.Size(281, 510);
             this.ListaTareas.TabIndex = 0;
             // 
             // labelAgregaTarea
@@ -290,7 +299,7 @@
             this.textBoxDescrip.Location = new System.Drawing.Point(116, 125);
             this.textBoxDescrip.Multiline = true;
             this.textBoxDescrip.Name = "textBoxDescrip";
-            this.textBoxDescrip.Size = new System.Drawing.Size(281, 182);
+            this.textBoxDescrip.Size = new System.Drawing.Size(281, 242);
             this.textBoxDescrip.TabIndex = 17;
             this.textBoxDescrip.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
@@ -307,7 +316,7 @@
             // labelFecha
             // 
             this.labelFecha.AutoSize = true;
-            this.labelFecha.Location = new System.Drawing.Point(6, 327);
+            this.labelFecha.Location = new System.Drawing.Point(6, 395);
             this.labelFecha.Name = "labelFecha";
             this.labelFecha.Size = new System.Drawing.Size(60, 21);
             this.labelFecha.TabIndex = 18;
@@ -315,7 +324,7 @@
             // 
             // PickerFecha
             // 
-            this.PickerFecha.Location = new System.Drawing.Point(72, 324);
+            this.PickerFecha.Location = new System.Drawing.Point(72, 392);
             this.PickerFecha.Name = "PickerFecha";
             this.PickerFecha.Size = new System.Drawing.Size(325, 28);
             this.PickerFecha.TabIndex = 19;
@@ -323,7 +332,7 @@
             // labelPrioridad
             // 
             this.labelPrioridad.AutoSize = true;
-            this.labelPrioridad.Location = new System.Drawing.Point(6, 374);
+            this.labelPrioridad.Location = new System.Drawing.Point(6, 442);
             this.labelPrioridad.Name = "labelPrioridad";
             this.labelPrioridad.Size = new System.Drawing.Size(82, 21);
             this.labelPrioridad.TabIndex = 20;
@@ -332,7 +341,7 @@
             // comboBoxPrioridad
             // 
             this.comboBoxPrioridad.FormattingEnabled = true;
-            this.comboBoxPrioridad.Location = new System.Drawing.Point(94, 371);
+            this.comboBoxPrioridad.Location = new System.Drawing.Point(94, 439);
             this.comboBoxPrioridad.Name = "comboBoxPrioridad";
             this.comboBoxPrioridad.Size = new System.Drawing.Size(303, 29);
             this.comboBoxPrioridad.TabIndex = 21;
@@ -340,7 +349,7 @@
             // comboBoxEstado
             // 
             this.comboBoxEstado.FormattingEnabled = true;
-            this.comboBoxEstado.Location = new System.Drawing.Point(94, 423);
+            this.comboBoxEstado.Location = new System.Drawing.Point(94, 491);
             this.comboBoxEstado.Name = "comboBoxEstado";
             this.comboBoxEstado.Size = new System.Drawing.Size(303, 29);
             this.comboBoxEstado.TabIndex = 23;
@@ -348,32 +357,34 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 426);
+            this.label6.Location = new System.Drawing.Point(6, 494);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 21);
             this.label6.TabIndex = 22;
             this.label6.Text = "Estado";
             // 
-            // buttonAceptar
+            // buttonAgregar
             // 
-            this.buttonAceptar.Location = new System.Drawing.Point(153, 480);
-            this.buttonAceptar.Name = "buttonAceptar";
-            this.buttonAceptar.Size = new System.Drawing.Size(144, 33);
-            this.buttonAceptar.TabIndex = 14;
-            this.buttonAceptar.Text = "Agregar";
-            this.buttonAceptar.UseVisualStyleBackColor = true;
+            this.buttonAgregar.Location = new System.Drawing.Point(153, 548);
+            this.buttonAgregar.Name = "buttonAgregar";
+            this.buttonAgregar.Size = new System.Drawing.Size(144, 33);
+            this.buttonAgregar.TabIndex = 14;
+            this.buttonAgregar.Text = "Agregar";
+            this.buttonAgregar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonBorrarTarea
             // 
-            this.button1.Location = new System.Drawing.Point(418, 579);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(281, 33);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Borrar tarea seleccionada";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonBorrarTarea.Location = new System.Drawing.Point(418, 652);
+            this.buttonBorrarTarea.Name = "buttonBorrarTarea";
+            this.buttonBorrarTarea.Size = new System.Drawing.Size(281, 33);
+            this.buttonBorrarTarea.TabIndex = 24;
+            this.buttonBorrarTarea.Text = "Borrar tarea seleccionada";
+            this.buttonBorrarTarea.UseVisualStyleBackColor = true;
+            this.buttonBorrarTarea.Click += new System.EventHandler(this.buttonBorrarTarea_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.textBoxUsuarioLogged);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label8);
@@ -381,7 +392,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 508);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(330, 145);
+            this.groupBox2.Size = new System.Drawing.Size(330, 195);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Información de usuario";
@@ -418,12 +429,55 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Correo";
             // 
+            // textBoxBusqueda
+            // 
+            this.textBoxBusqueda.Location = new System.Drawing.Point(418, 27);
+            this.textBoxBusqueda.Name = "textBoxBusqueda";
+            this.textBoxBusqueda.Size = new System.Drawing.Size(281, 28);
+            this.textBoxBusqueda.TabIndex = 26;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(300, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(112, 21);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Buscar tarea";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(414, 75);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(107, 21);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Ordenar por";
+            // 
+            // comboBoxMetodosOrd
+            // 
+            this.comboBoxMetodosOrd.FormattingEnabled = true;
+            this.comboBoxMetodosOrd.Location = new System.Drawing.Point(527, 70);
+            this.comboBoxMetodosOrd.Name = "comboBoxMetodosOrd";
+            this.comboBoxMetodosOrd.Size = new System.Drawing.Size(172, 29);
+            this.comboBoxMetodosOrd.TabIndex = 28;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(91, 143);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(144, 33);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Cerrar sesión";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
-            this.ClientSize = new System.Drawing.Size(1090, 676);
+            this.ClientSize = new System.Drawing.Size(1090, 715);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxRegister);
@@ -467,8 +521,8 @@
         private System.Windows.Forms.Label labelFecha;
         private System.Windows.Forms.Label labelPrioridad;
         private System.Windows.Forms.DateTimePicker PickerFecha;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button buttonAceptar;
+        private System.Windows.Forms.Button buttonBorrarTarea;
+        private System.Windows.Forms.Button buttonAgregar;
         private System.Windows.Forms.ComboBox comboBoxEstado;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxPrioridad;
@@ -477,6 +531,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxCorreoLogged;
+        private System.Windows.Forms.TextBox textBoxBusqueda;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBoxMetodosOrd;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
     }
 }
 

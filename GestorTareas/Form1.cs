@@ -106,5 +106,15 @@ namespace GestorTareas
         {
 
         }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBorrarTarea_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
