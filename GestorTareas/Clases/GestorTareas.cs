@@ -8,7 +8,13 @@ namespace GestorTareas.Clases
 {
     internal class GestorTareas
     {
+
         private List<Tarea> tareas; // Lista de tareas gestionadas por el gestor
+
+        // Eventos para notificar cambios en las tareas
+        public event EventHandler<TareaEventArgs> TareaCreada;
+        public event EventHandler<TareaEventArgs> TareaActualizada;
+        public event EventHandler<TareaEventArgs> TareaEliminada;
 
         public GestorTareas()
         {
@@ -19,12 +25,15 @@ namespace GestorTareas.Clases
         public void AgregarTarea(Tarea tarea)
         {
             tareas.Add(tarea);
+            TareaCreada?.Invoke(this, new TareaEventArgs(tarea));
+
         }
 
         // Método para eliminar una tarea del gestor
         public void EliminarTarea(Tarea tarea)
         {
             tareas.Remove(tarea);
+            TareaEliminada?.Invoke(this, new TareaEventArgs(tarea));
         }
 
         // Método para actualizar una tarea en el gestor
@@ -37,6 +46,8 @@ namespace GestorTareas.Clases
                 tarea.FechaVencimiento = tareaActualizada.FechaVencimiento;
                 tarea.Prioridad = tareaActualizada.Prioridad;
                 tarea.Estado = tareaActualizada.Estado;
+                TareaActualizada?.Invoke(this, new TareaEventArgs(tarea));
+
             }
             else
             {
