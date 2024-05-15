@@ -14,33 +14,41 @@ namespace ProgramaGestorTareas.Clases
         private DateTime fechaVencimiento;
         private string prioridad;
         private string estado;
-        private Usuario usuarioCreador; // Id del usuario que creó la tarea
+        private Usuario usuarioCreador; 
 
-        public Tarea(string titulo, string descripcion, DateTime fechaVencimiento, string prioridad, string estado, Usuario usuarioCreador)
+        public Tarea(string titulo, string descripcion,
+            DateTime fechaVencimiento, string prioridad,
+            string estado, Usuario usuarioCreador)
         {
             TareaId = GenerarIdAleatorio();
             Titulo = titulo;
             Descripcion = descripcion;
-            FechaVencimiento = fechaVencimiento;
+            FechaVenc = fechaVencimiento;
             Prioridad = prioridad;
             Estado = estado;
             UsuarioCreador = usuarioCreador;
         }
 
-        public int TareaId { get => tareaId; private set => tareaId = value; }
-        public string Titulo { get => titulo; set => titulo = value; }
-        public string Descripcion { get => descripcion; set => descripcion = value; }
-        public DateTime FechaVencimiento { get => fechaVencimiento; set => fechaVencimiento = value; }
+        public int TareaId { get => tareaId;
+            private set => tareaId = value; }
+        public string Titulo { get => titulo;
+            set => titulo = value; }
+        public string Descripcion { get => descripcion;
+            set => descripcion = value; }
+        public DateTime FechaVenc { get => fechaVencimiento;
+            set => fechaVencimiento = value; }
 
         public string Prioridad
         {
             get => prioridad;
             set
             {
-                if (value == "Baja" || value == "Media" || value == "Alta")
+                if (value == "Baja" || value == "Media" || 
+                    value == "Alta")
                     prioridad = value;
                 else
-                    throw new ArgumentException("El valor de prioridad no es válido.");
+                    throw new ArgumentException("El valor de" +
+                        "prioridad no es válido.");
             }
         }
 
@@ -49,14 +57,18 @@ namespace ProgramaGestorTareas.Clases
             get => estado;
             set
             {
-                if (value == "Por Hacer" || value == "En Progreso" || value == "Terminado")
+                if (value == "Por Hacer" || 
+                    value == "En Progreso" ||
+                    value == "Terminado")
                     estado = value;
                 else
-                    throw new ArgumentException("El valor de estado no es válido.");
+                    throw new ArgumentException("El valor " +
+                        "de estado no es válido.");
             }
         }
 
-        public Usuario UsuarioCreador { get => usuarioCreador; set => usuarioCreador = value; }
+        public Usuario UsuarioCreador { get => usuarioCreador;
+            set => usuarioCreador = value; }
 
         private int GenerarIdAleatorio()
         {

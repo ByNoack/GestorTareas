@@ -31,7 +31,8 @@ namespace ProgramaGestorTareas.Clases
                 if (value.Length > 3)
                     username = value;
                 else
-                    throw new ArgumentException("El nombre de usuario debe tener al menos 3 caracteres.");
+                    throw new ArgumentException("El nombre de usuario debe " +
+                        "tener al menos 3 caracteres.");
             }
         }
 
@@ -47,12 +48,16 @@ namespace ProgramaGestorTareas.Clases
             }
         }
 
-        public string Password { get => password; set => password = value; }
+        public string Password { get => password;
+            set => password = value; }
 
         private int GenerarIdAleatorio()
         {
             Random random = new Random();
-            return random.Next(1000, 10000); // Generar un ID aleatorio de 4 dígitos
+            // Generar un ID aleatorio de 4 dígitos
+            //que esté entre 1000 y 9999
+            return random.Next(1000, 10000);
+            
         }
 
     }

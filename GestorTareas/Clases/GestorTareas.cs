@@ -39,7 +39,7 @@ namespace ProgramaGestorTareas.Clases
         // Método para actualizar una tarea en el gestor
         public void ActualizarTarea(Tarea tareaActualizada)
         {
-            var tarea = tareas.FirstOrDefault(t => t.Titulo == tareaActualizada.Titulo);
+          Tarea tarea = tareas.FirstOrDefault(t => t.Titulo == tareaActualizada.Titulo);
             if (tarea != null)
             {
                 tarea.Descripcion = tareaActualizada.Descripcion;
@@ -67,17 +67,20 @@ namespace ProgramaGestorTareas.Clases
             switch (metodoOrdenamiento)
             {
                 case "PorTitulo":
-                    tareas = tareas.OrderBy(t => t.Titulo).ToList(); break;
+                    tareas = tareas.OrderBy(t => t.Titulo).ToList(); 
+                    break;
                 case "PorPrioridad":
                     tareas = tareas.OrderBy(t => t.Prioridad).ToList();
                     break;
                 case "PorFechaVencimiento":
-                    tareas = tareas.OrderBy(t => t.FechaVencimiento).ToList();
+                    tareas = tareas.OrderBy(t => t.FechaVenc).ToList();
                     break;
                 case "PorEstado":
-                    tareas = tareas.OrderBy(t => t.Estado).ToList(); break;
+                    tareas = tareas.OrderBy(t => t.Estado).ToList(); 
+                    break;
                 default:
-                    throw new ArgumentException("Método de ordenamiento no válido.");
+                    throw new ArgumentException("Método de " +
+                        "ordenamiento no válido.");
             }
         }
 
