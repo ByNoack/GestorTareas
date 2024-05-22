@@ -14,11 +14,11 @@ namespace ProgramaGestorTareas.Clases
         private DateTime fechaVencimiento;
         private string prioridad;
         private string estado;
-        private Usuario usuarioCreador; 
+        private string usuarioCreador; 
 
         public Tarea(string titulo, string descripcion,
             DateTime fechaVencimiento, string prioridad,
-            string estado, Usuario usuarioCreador)
+            string estado, string usuarioCreador)
         {
             TareaId = GenerarIdAleatorio();
             Titulo = titulo;
@@ -67,7 +67,7 @@ namespace ProgramaGestorTareas.Clases
             }
         }
 
-        public Usuario UsuarioCreador { get => usuarioCreador;
+        public string UsuarioCreador { get => usuarioCreador;
             set => usuarioCreador = value; }
 
         private int GenerarIdAleatorio()

@@ -29,45 +29,45 @@
         private void InitializeComponent()
         {
             this.groupBoxRegister = new System.Windows.Forms.GroupBox();
-            this.textoiniciasesion = new System.Windows.Forms.Label();
-            this.labelCorreo = new System.Windows.Forms.Label();
-            this.textBoxCorreo = new System.Windows.Forms.TextBox();
-            this.textBoxContraseña = new System.Windows.Forms.TextBox();
-            this.labelContraseña = new System.Windows.Forms.Label();
-            this.labelRegistro = new System.Windows.Forms.Label();
+            this.buttonRegistro = new System.Windows.Forms.Button();
+            this.buttonLogin = new System.Windows.Forms.Button();
+            this.textBoxUsuarioNuevo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.textContraseñaNueva = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxCorreoNuevo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxUsuarioNuevo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.buttonLogin = new System.Windows.Forms.Button();
-            this.buttonRegistro = new System.Windows.Forms.Button();
+            this.labelRegistro = new System.Windows.Forms.Label();
+            this.textBoxContraseña = new System.Windows.Forms.TextBox();
+            this.labelContraseña = new System.Windows.Forms.Label();
+            this.textBoxCorreo = new System.Windows.Forms.TextBox();
+            this.labelCorreo = new System.Windows.Forms.Label();
+            this.textoiniciasesion = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ListaTareas = new System.Windows.Forms.CheckedListBox();
-            this.labelAgregaTarea = new System.Windows.Forms.Label();
-            this.textBoxTitulo = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxDescrip = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.labelFecha = new System.Windows.Forms.Label();
-            this.PickerFecha = new System.Windows.Forms.DateTimePicker();
-            this.labelPrioridad = new System.Windows.Forms.Label();
-            this.comboBoxPrioridad = new System.Windows.Forms.ComboBox();
-            this.comboBoxEstado = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.buttonAgregar = new System.Windows.Forms.Button();
-            this.buttonBorrarTarea = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBoxUsuarioLogged = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxCorreoLogged = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.comboBoxMetodosOrd = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.textBoxBusqueda = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBoxMetodosOrd = new System.Windows.Forms.ComboBox();
+            this.buttonBorrarTarea = new System.Windows.Forms.Button();
+            this.buttonAgregar = new System.Windows.Forms.Button();
+            this.comboBoxEstado = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxPrioridad = new System.Windows.Forms.ComboBox();
+            this.labelPrioridad = new System.Windows.Forms.Label();
+            this.PickerFecha = new System.Windows.Forms.DateTimePicker();
+            this.labelFecha = new System.Windows.Forms.Label();
+            this.textBoxDescrip = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxTitulo = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.labelAgregaTarea = new System.Windows.Forms.Label();
+            this.ListaTareas = new System.Windows.Forms.CheckedListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBoxUsuarioLogged = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxCorreoLogged = new System.Windows.Forms.TextBox();
             this.groupBoxRegister.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -98,63 +98,43 @@
             this.groupBoxRegister.Text = "Inicia sesión o registrate";
             this.groupBoxRegister.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // textoiniciasesion
+            // buttonRegistro
             // 
-            this.textoiniciasesion.AutoSize = true;
-            this.textoiniciasesion.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoiniciasesion.Location = new System.Drawing.Point(6, 39);
-            this.textoiniciasesion.Name = "textoiniciasesion";
-            this.textoiniciasesion.Size = new System.Drawing.Size(119, 21);
-            this.textoiniciasesion.TabIndex = 0;
-            this.textoiniciasesion.Text = "Inicia sesión";
-            this.textoiniciasesion.Click += new System.EventHandler(this.label1_Click);
+            this.buttonRegistro.Location = new System.Drawing.Point(91, 423);
+            this.buttonRegistro.Name = "buttonRegistro";
+            this.buttonRegistro.Size = new System.Drawing.Size(144, 33);
+            this.buttonRegistro.TabIndex = 13;
+            this.buttonRegistro.Text = "Registrarse";
+            this.buttonRegistro.UseVisualStyleBackColor = true;
+            this.buttonRegistro.Click += new System.EventHandler(this.buttonRegistro_Click);
             // 
-            // labelCorreo
+            // buttonLogin
             // 
-            this.labelCorreo.AutoSize = true;
-            this.labelCorreo.Location = new System.Drawing.Point(6, 78);
-            this.labelCorreo.Name = "labelCorreo";
-            this.labelCorreo.Size = new System.Drawing.Size(65, 21);
-            this.labelCorreo.TabIndex = 1;
-            this.labelCorreo.Text = "Correo";
-            this.labelCorreo.Click += new System.EventHandler(this.label1_Click_1);
+            this.buttonLogin.Location = new System.Drawing.Point(91, 177);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(144, 33);
+            this.buttonLogin.TabIndex = 12;
+            this.buttonLogin.Text = "Iniciar sesión";
+            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // textBoxCorreo
+            // textBoxUsuarioNuevo
             // 
-            this.textBoxCorreo.Location = new System.Drawing.Point(78, 78);
-            this.textBoxCorreo.Name = "textBoxCorreo";
-            this.textBoxCorreo.Size = new System.Drawing.Size(233, 28);
-            this.textBoxCorreo.TabIndex = 2;
+            this.textBoxUsuarioNuevo.Location = new System.Drawing.Point(91, 279);
+            this.textBoxUsuarioNuevo.Name = "textBoxUsuarioNuevo";
+            this.textBoxUsuarioNuevo.Size = new System.Drawing.Size(227, 28);
+            this.textBoxUsuarioNuevo.TabIndex = 11;
+            this.textBoxUsuarioNuevo.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // textBoxContraseña
+            // label3
             // 
-            this.textBoxContraseña.Location = new System.Drawing.Point(115, 125);
-            this.textBoxContraseña.Name = "textBoxContraseña";
-            this.textBoxContraseña.Size = new System.Drawing.Size(196, 28);
-            this.textBoxContraseña.TabIndex = 4;
-            this.textBoxContraseña.UseSystemPasswordChar = true;
-            this.textBoxContraseña.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // labelContraseña
-            // 
-            this.labelContraseña.AutoSize = true;
-            this.labelContraseña.Location = new System.Drawing.Point(6, 125);
-            this.labelContraseña.Name = "labelContraseña";
-            this.labelContraseña.Size = new System.Drawing.Size(103, 21);
-            this.labelContraseña.TabIndex = 3;
-            this.labelContraseña.Text = "Contraseña";
-            this.labelContraseña.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // labelRegistro
-            // 
-            this.labelRegistro.AutoSize = true;
-            this.labelRegistro.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRegistro.Location = new System.Drawing.Point(6, 239);
-            this.labelRegistro.Name = "labelRegistro";
-            this.labelRegistro.Size = new System.Drawing.Size(100, 21);
-            this.labelRegistro.TabIndex = 5;
-            this.labelRegistro.Text = "Regístrate";
-            this.labelRegistro.Click += new System.EventHandler(this.label1_Click_2);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 279);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 21);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Usuario";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // textContraseñaNueva
             // 
@@ -193,41 +173,64 @@
             this.label2.Text = "Correo";
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
-            // textBoxUsuarioNuevo
+            // labelRegistro
             // 
-            this.textBoxUsuarioNuevo.Location = new System.Drawing.Point(91, 279);
-            this.textBoxUsuarioNuevo.Name = "textBoxUsuarioNuevo";
-            this.textBoxUsuarioNuevo.Size = new System.Drawing.Size(227, 28);
-            this.textBoxUsuarioNuevo.TabIndex = 11;
-            this.textBoxUsuarioNuevo.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.labelRegistro.AutoSize = true;
+            this.labelRegistro.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRegistro.Location = new System.Drawing.Point(6, 239);
+            this.labelRegistro.Name = "labelRegistro";
+            this.labelRegistro.Size = new System.Drawing.Size(100, 21);
+            this.labelRegistro.TabIndex = 5;
+            this.labelRegistro.Text = "Regístrate";
+            this.labelRegistro.Click += new System.EventHandler(this.label1_Click_2);
             // 
-            // label3
+            // textBoxContraseña
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 279);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 21);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Usuario";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.textBoxContraseña.Location = new System.Drawing.Point(115, 125);
+            this.textBoxContraseña.Name = "textBoxContraseña";
+            this.textBoxContraseña.Size = new System.Drawing.Size(196, 28);
+            this.textBoxContraseña.TabIndex = 4;
+            this.textBoxContraseña.UseSystemPasswordChar = true;
+            this.textBoxContraseña.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // buttonLogin
+            // labelContraseña
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(91, 177);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(144, 33);
-            this.buttonLogin.TabIndex = 12;
-            this.buttonLogin.Text = "Iniciar sesión";
-            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.labelContraseña.AutoSize = true;
+            this.labelContraseña.Location = new System.Drawing.Point(6, 125);
+            this.labelContraseña.Name = "labelContraseña";
+            this.labelContraseña.Size = new System.Drawing.Size(103, 21);
+            this.labelContraseña.TabIndex = 3;
+            this.labelContraseña.Text = "Contraseña";
+            this.labelContraseña.Click += new System.EventHandler(this.label2_Click);
             // 
-            // buttonRegistro
+            // textBoxCorreo
             // 
-            this.buttonRegistro.Location = new System.Drawing.Point(91, 423);
-            this.buttonRegistro.Name = "buttonRegistro";
-            this.buttonRegistro.Size = new System.Drawing.Size(144, 33);
-            this.buttonRegistro.TabIndex = 13;
-            this.buttonRegistro.Text = "Registrarse";
-            this.buttonRegistro.UseVisualStyleBackColor = true;
+            this.textBoxCorreo.Location = new System.Drawing.Point(78, 78);
+            this.textBoxCorreo.Name = "textBoxCorreo";
+            this.textBoxCorreo.Size = new System.Drawing.Size(233, 28);
+            this.textBoxCorreo.TabIndex = 2;
+            this.textBoxCorreo.TextChanged += new System.EventHandler(this.textBoxCorreo_TextChanged);
+            // 
+            // labelCorreo
+            // 
+            this.labelCorreo.AutoSize = true;
+            this.labelCorreo.Location = new System.Drawing.Point(6, 78);
+            this.labelCorreo.Name = "labelCorreo";
+            this.labelCorreo.Size = new System.Drawing.Size(65, 21);
+            this.labelCorreo.TabIndex = 1;
+            this.labelCorreo.Text = "Correo";
+            this.labelCorreo.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // textoiniciasesion
+            // 
+            this.textoiniciasesion.AutoSize = true;
+            this.textoiniciasesion.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoiniciasesion.Location = new System.Drawing.Point(6, 39);
+            this.textoiniciasesion.Name = "textoiniciasesion";
+            this.textoiniciasesion.Size = new System.Drawing.Size(119, 21);
+            this.textoiniciasesion.TabIndex = 0;
+            this.textoiniciasesion.Text = "Inicia sesión";
+            this.textoiniciasesion.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 
@@ -258,41 +261,108 @@
             this.groupBox1.Text = "Tareas";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter_1);
             // 
-            // ListaTareas
+            // comboBoxMetodosOrd
             // 
-            this.ListaTareas.FormattingEnabled = true;
-            this.ListaTareas.Location = new System.Drawing.Point(418, 119);
-            this.ListaTareas.Name = "ListaTareas";
-            this.ListaTareas.Size = new System.Drawing.Size(281, 510);
-            this.ListaTareas.TabIndex = 0;
+            this.comboBoxMetodosOrd.FormattingEnabled = true;
+            this.comboBoxMetodosOrd.Location = new System.Drawing.Point(527, 70);
+            this.comboBoxMetodosOrd.Name = "comboBoxMetodosOrd";
+            this.comboBoxMetodosOrd.Size = new System.Drawing.Size(172, 29);
+            this.comboBoxMetodosOrd.TabIndex = 28;
             // 
-            // labelAgregaTarea
+            // label10
             // 
-            this.labelAgregaTarea.AutoSize = true;
-            this.labelAgregaTarea.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAgregaTarea.Location = new System.Drawing.Point(6, 39);
-            this.labelAgregaTarea.Name = "labelAgregaTarea";
-            this.labelAgregaTarea.Size = new System.Drawing.Size(159, 21);
-            this.labelAgregaTarea.TabIndex = 14;
-            this.labelAgregaTarea.Text = "Agrega una tarea";
-            this.labelAgregaTarea.Click += new System.EventHandler(this.label4_Click);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(414, 75);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(107, 21);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Ordenar por";
             // 
-            // textBoxTitulo
+            // textBoxBusqueda
             // 
-            this.textBoxTitulo.Location = new System.Drawing.Point(68, 75);
-            this.textBoxTitulo.Name = "textBoxTitulo";
-            this.textBoxTitulo.Size = new System.Drawing.Size(329, 28);
-            this.textBoxTitulo.TabIndex = 15;
-            this.textBoxTitulo.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBoxBusqueda.Location = new System.Drawing.Point(418, 27);
+            this.textBoxBusqueda.Name = "textBoxBusqueda";
+            this.textBoxBusqueda.Size = new System.Drawing.Size(281, 28);
+            this.textBoxBusqueda.TabIndex = 26;
             // 
-            // label4
+            // label9
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 75);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 21);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Título";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(300, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(112, 21);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Buscar tarea";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // buttonBorrarTarea
+            // 
+            this.buttonBorrarTarea.Location = new System.Drawing.Point(418, 652);
+            this.buttonBorrarTarea.Name = "buttonBorrarTarea";
+            this.buttonBorrarTarea.Size = new System.Drawing.Size(281, 33);
+            this.buttonBorrarTarea.TabIndex = 24;
+            this.buttonBorrarTarea.Text = "Borrar tarea seleccionada";
+            this.buttonBorrarTarea.UseVisualStyleBackColor = true;
+            this.buttonBorrarTarea.Click += new System.EventHandler(this.buttonBorrarTarea_Click);
+            // 
+            // buttonAgregar
+            // 
+            this.buttonAgregar.Location = new System.Drawing.Point(153, 548);
+            this.buttonAgregar.Name = "buttonAgregar";
+            this.buttonAgregar.Size = new System.Drawing.Size(144, 33);
+            this.buttonAgregar.TabIndex = 14;
+            this.buttonAgregar.Text = "Agregar";
+            this.buttonAgregar.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxEstado
+            // 
+            this.comboBoxEstado.FormattingEnabled = true;
+            this.comboBoxEstado.Location = new System.Drawing.Point(94, 491);
+            this.comboBoxEstado.Name = "comboBoxEstado";
+            this.comboBoxEstado.Size = new System.Drawing.Size(303, 29);
+            this.comboBoxEstado.TabIndex = 23;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 494);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 21);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Estado";
+            // 
+            // comboBoxPrioridad
+            // 
+            this.comboBoxPrioridad.FormattingEnabled = true;
+            this.comboBoxPrioridad.Location = new System.Drawing.Point(94, 439);
+            this.comboBoxPrioridad.Name = "comboBoxPrioridad";
+            this.comboBoxPrioridad.Size = new System.Drawing.Size(303, 29);
+            this.comboBoxPrioridad.TabIndex = 21;
+            // 
+            // labelPrioridad
+            // 
+            this.labelPrioridad.AutoSize = true;
+            this.labelPrioridad.Location = new System.Drawing.Point(6, 442);
+            this.labelPrioridad.Name = "labelPrioridad";
+            this.labelPrioridad.Size = new System.Drawing.Size(82, 21);
+            this.labelPrioridad.TabIndex = 20;
+            this.labelPrioridad.Text = "Prioridad";
+            // 
+            // PickerFecha
+            // 
+            this.PickerFecha.Location = new System.Drawing.Point(72, 392);
+            this.PickerFecha.Name = "PickerFecha";
+            this.PickerFecha.Size = new System.Drawing.Size(325, 28);
+            this.PickerFecha.TabIndex = 19;
+            // 
+            // labelFecha
+            // 
+            this.labelFecha.AutoSize = true;
+            this.labelFecha.Location = new System.Drawing.Point(6, 395);
+            this.labelFecha.Name = "labelFecha";
+            this.labelFecha.Size = new System.Drawing.Size(60, 21);
+            this.labelFecha.TabIndex = 18;
+            this.labelFecha.Text = "Fecha";
             // 
             // textBoxDescrip
             // 
@@ -313,74 +383,42 @@
             this.label5.Text = "Descripción";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // labelFecha
+            // textBoxTitulo
             // 
-            this.labelFecha.AutoSize = true;
-            this.labelFecha.Location = new System.Drawing.Point(6, 395);
-            this.labelFecha.Name = "labelFecha";
-            this.labelFecha.Size = new System.Drawing.Size(60, 21);
-            this.labelFecha.TabIndex = 18;
-            this.labelFecha.Text = "Fecha";
+            this.textBoxTitulo.Location = new System.Drawing.Point(68, 75);
+            this.textBoxTitulo.Name = "textBoxTitulo";
+            this.textBoxTitulo.Size = new System.Drawing.Size(329, 28);
+            this.textBoxTitulo.TabIndex = 15;
+            this.textBoxTitulo.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
-            // PickerFecha
+            // label4
             // 
-            this.PickerFecha.Location = new System.Drawing.Point(72, 392);
-            this.PickerFecha.Name = "PickerFecha";
-            this.PickerFecha.Size = new System.Drawing.Size(325, 28);
-            this.PickerFecha.TabIndex = 19;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 75);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 21);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Título";
+            this.label4.Click += new System.EventHandler(this.label4_Click_1);
             // 
-            // labelPrioridad
+            // labelAgregaTarea
             // 
-            this.labelPrioridad.AutoSize = true;
-            this.labelPrioridad.Location = new System.Drawing.Point(6, 442);
-            this.labelPrioridad.Name = "labelPrioridad";
-            this.labelPrioridad.Size = new System.Drawing.Size(82, 21);
-            this.labelPrioridad.TabIndex = 20;
-            this.labelPrioridad.Text = "Prioridad";
+            this.labelAgregaTarea.AutoSize = true;
+            this.labelAgregaTarea.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAgregaTarea.Location = new System.Drawing.Point(6, 39);
+            this.labelAgregaTarea.Name = "labelAgregaTarea";
+            this.labelAgregaTarea.Size = new System.Drawing.Size(159, 21);
+            this.labelAgregaTarea.TabIndex = 14;
+            this.labelAgregaTarea.Text = "Agrega una tarea";
+            this.labelAgregaTarea.Click += new System.EventHandler(this.label4_Click);
             // 
-            // comboBoxPrioridad
+            // ListaTareas
             // 
-            this.comboBoxPrioridad.FormattingEnabled = true;
-            this.comboBoxPrioridad.Location = new System.Drawing.Point(94, 439);
-            this.comboBoxPrioridad.Name = "comboBoxPrioridad";
-            this.comboBoxPrioridad.Size = new System.Drawing.Size(303, 29);
-            this.comboBoxPrioridad.TabIndex = 21;
-            // 
-            // comboBoxEstado
-            // 
-            this.comboBoxEstado.FormattingEnabled = true;
-            this.comboBoxEstado.Location = new System.Drawing.Point(94, 491);
-            this.comboBoxEstado.Name = "comboBoxEstado";
-            this.comboBoxEstado.Size = new System.Drawing.Size(303, 29);
-            this.comboBoxEstado.TabIndex = 23;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 494);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 21);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Estado";
-            // 
-            // buttonAgregar
-            // 
-            this.buttonAgregar.Location = new System.Drawing.Point(153, 548);
-            this.buttonAgregar.Name = "buttonAgregar";
-            this.buttonAgregar.Size = new System.Drawing.Size(144, 33);
-            this.buttonAgregar.TabIndex = 14;
-            this.buttonAgregar.Text = "Agregar";
-            this.buttonAgregar.UseVisualStyleBackColor = true;
-            // 
-            // buttonBorrarTarea
-            // 
-            this.buttonBorrarTarea.Location = new System.Drawing.Point(418, 652);
-            this.buttonBorrarTarea.Name = "buttonBorrarTarea";
-            this.buttonBorrarTarea.Size = new System.Drawing.Size(281, 33);
-            this.buttonBorrarTarea.TabIndex = 24;
-            this.buttonBorrarTarea.Text = "Borrar tarea seleccionada";
-            this.buttonBorrarTarea.UseVisualStyleBackColor = true;
-            this.buttonBorrarTarea.Click += new System.EventHandler(this.buttonBorrarTarea_Click);
+            this.ListaTareas.FormattingEnabled = true;
+            this.ListaTareas.Location = new System.Drawing.Point(418, 119);
+            this.ListaTareas.Name = "ListaTareas";
+            this.ListaTareas.Size = new System.Drawing.Size(281, 510);
+            this.ListaTareas.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -397,12 +435,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Información de usuario";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(91, 143);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(144, 33);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Cerrar sesión";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // textBoxUsuarioLogged
             // 
             this.textBoxUsuarioLogged.Location = new System.Drawing.Point(91, 36);
             this.textBoxUsuarioLogged.Name = "textBoxUsuarioLogged";
             this.textBoxUsuarioLogged.Size = new System.Drawing.Size(227, 28);
             this.textBoxUsuarioLogged.TabIndex = 17;
+            this.textBoxUsuarioLogged.TextChanged += new System.EventHandler(this.textBoxUsuarioLogged_TextChanged);
             // 
             // label7
             // 
@@ -413,13 +461,6 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "Usuario";
             // 
-            // textBoxCorreoLogged
-            // 
-            this.textBoxCorreoLogged.Location = new System.Drawing.Point(85, 84);
-            this.textBoxCorreoLogged.Name = "textBoxCorreoLogged";
-            this.textBoxCorreoLogged.Size = new System.Drawing.Size(233, 28);
-            this.textBoxCorreoLogged.TabIndex = 15;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -429,48 +470,12 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Correo";
             // 
-            // textBoxBusqueda
+            // textBoxCorreoLogged
             // 
-            this.textBoxBusqueda.Location = new System.Drawing.Point(418, 27);
-            this.textBoxBusqueda.Name = "textBoxBusqueda";
-            this.textBoxBusqueda.Size = new System.Drawing.Size(281, 28);
-            this.textBoxBusqueda.TabIndex = 26;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(300, 30);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(112, 21);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "Buscar tarea";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(414, 75);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(107, 21);
-            this.label10.TabIndex = 27;
-            this.label10.Text = "Ordenar por";
-            // 
-            // comboBoxMetodosOrd
-            // 
-            this.comboBoxMetodosOrd.FormattingEnabled = true;
-            this.comboBoxMetodosOrd.Location = new System.Drawing.Point(527, 70);
-            this.comboBoxMetodosOrd.Name = "comboBoxMetodosOrd";
-            this.comboBoxMetodosOrd.Size = new System.Drawing.Size(172, 29);
-            this.comboBoxMetodosOrd.TabIndex = 28;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(91, 143);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 33);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Cerrar sesión";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBoxCorreoLogged.Location = new System.Drawing.Point(85, 84);
+            this.textBoxCorreoLogged.Name = "textBoxCorreoLogged";
+            this.textBoxCorreoLogged.Size = new System.Drawing.Size(233, 28);
+            this.textBoxCorreoLogged.TabIndex = 15;
             // 
             // Form1
             // 
