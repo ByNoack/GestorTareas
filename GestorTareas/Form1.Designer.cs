@@ -430,7 +430,9 @@
             this.ListaTareas.Name = "ListaTareas";
             this.ListaTareas.Size = new System.Drawing.Size(281, 510);
             this.ListaTareas.TabIndex = 0;
+            this.ListaTareas.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ListaTareas_ItemCheck_1);
             this.ListaTareas.SelectedIndexChanged += new System.EventHandler(this.ListaTareas_SelectedIndexChanged);
+            this.ListaTareas.ImeModeChanged += new System.EventHandler(this.ListaTareas_ImeModeChanged);
             // 
             // groupBox2
             // 
@@ -455,6 +457,7 @@
             this.button1.TabIndex = 29;
             this.button1.Text = "Cerrar sesión";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBoxUsuarioLogged
             // 

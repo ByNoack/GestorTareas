@@ -81,37 +81,6 @@ namespace GestorTareas
         {
 
         }
-        private void ListaTareas_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            try
-            {
-                // Obtener el título de la tarea seleccionada
-                string tituloTareaSeleccionada = ListaTareas.Items[e.Index].ToString();
-
-                // Buscar la tarea en la lista de tareas del gestor
-                Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada).FirstOrDefault();
-
-                if (tareaSeleccionada != null)
-                {
-                    // Cambiar el estado de la tarea basado en el nuevo estado del check
-                    if (e.NewValue == CheckState.Checked)
-                    {
-                        tareaSeleccionada.Estado = "Terminada";
-                    }
-                    else if (e.NewValue == CheckState.Unchecked)
-                    {
-                        tareaSeleccionada.Estado = "Por Hacer";
-                    }
-
-                    // Actualizar la tarea en el gestor de tareas
-                    controladorTareas.ActualizarTarea(tareaSeleccionada);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
@@ -334,6 +303,59 @@ namespace GestorTareas
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                usuarioActual = null;
+
+                textBoxUsuarioLogged.Text = "";
+                textBoxCorreoLogged.Text = "";
+                ListaTareas.Items.Clear();
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ListaTareas_ImeModeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListaTareas_ItemCheck_1(object sender, ItemCheckEventArgs e)
+        {
+            try
+            {
+                // Obtener el título de la tarea seleccionada
+                string tituloTareaSeleccionada = ListaTareas.Items[e.Index].ToString();
+
+                // Buscar la tarea en la lista de tareas del gestor
+                Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada).FirstOrDefault();
+
+                if (tareaSeleccionada != null)
+                {
+                    // Cambiar el estado de la tarea basado en el nuevo estado del check
+                    if (e.NewValue == CheckState.Checked)
+                    {
+                        tareaSeleccionada.Estado = "Terminado";
+                    }
+                    else if (e.NewValue == CheckState.Unchecked)
+                    {
+                        tareaSeleccionada.Estado = "Por Hacer";
+                    }
+
+                    // Actualizar la tarea en el gestor de tareas
+                    controladorTareas.ActualizarTarea(tareaSeleccionada);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
