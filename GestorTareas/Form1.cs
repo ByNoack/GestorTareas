@@ -120,7 +120,25 @@ namespace GestorTareas
 
         private void buttonBorrarTarea_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string tituloTareaSeleccionada = textBoxTitulo.Text;
 
+                // Buscar la tarea en la lista de tareas del gestor
+                Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada).FirstOrDefault();
+
+                if (tareaSeleccionada != null)
+                {
+                    ListaTareas.Items.Remove(tareaSeleccionada.Titulo);
+                    // Actualizar la tarea en el gestor de tareas
+                    controladorTareas.EliminarTarea(tareaSeleccionada);
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void textBoxCorreo_TextChanged(object sender, EventArgs e)

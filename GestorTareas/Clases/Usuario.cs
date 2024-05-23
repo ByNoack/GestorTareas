@@ -28,7 +28,7 @@ namespace GestorTareas.Clases
             get => username;
             set
             {
-                if (value.Length > 3)
+                if (value.Length >= 3)
                     username = value;
                 else
                     throw new ArgumentException("El nombre de usuario debe " +
