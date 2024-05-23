@@ -72,16 +72,16 @@ namespace GestorTareas.Clases
         {
             switch (metodoOrdenamiento)
             {
-                case "PorTitulo":
+                case "Por título":
                     tareas = tareas.OrderBy(t => t.Titulo).ToList(); 
                     break;
-                case "PorPrioridad":
+                case "Por prioridad":
                     tareas = tareas.OrderBy(t => t.Prioridad).ToList();
                     break;
-                case "PorFechaVencimiento":
+                case "Por fecha de vencimiento":
                     tareas = tareas.OrderBy(t => t.FechaVenc).ToList();
                     break;
-                case "PorEstado":
+                case "Por estado":
                     tareas = tareas.OrderBy(t => t.Estado).ToList(); 
                     break;
                 default:

@@ -264,10 +264,16 @@
             // comboBoxMetodosOrd
             // 
             this.comboBoxMetodosOrd.FormattingEnabled = true;
+            this.comboBoxMetodosOrd.Items.AddRange(new object[] {
+            "Por título",
+            "Por fecha de vencimiento",
+            "Por prioridad",
+            "Por estado"});
             this.comboBoxMetodosOrd.Location = new System.Drawing.Point(527, 70);
             this.comboBoxMetodosOrd.Name = "comboBoxMetodosOrd";
             this.comboBoxMetodosOrd.Size = new System.Drawing.Size(172, 29);
             this.comboBoxMetodosOrd.TabIndex = 28;
+            this.comboBoxMetodosOrd.SelectedIndexChanged += new System.EventHandler(this.comboBoxMetodosOrd_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -284,6 +290,7 @@
             this.textBoxBusqueda.Name = "textBoxBusqueda";
             this.textBoxBusqueda.Size = new System.Drawing.Size(281, 28);
             this.textBoxBusqueda.TabIndex = 26;
+            this.textBoxBusqueda.TextChanged += new System.EventHandler(this.textBoxBusqueda_TextChanged);
             // 
             // label9
             // 
@@ -463,6 +470,7 @@
             // 
             this.textBoxUsuarioLogged.Location = new System.Drawing.Point(91, 36);
             this.textBoxUsuarioLogged.Name = "textBoxUsuarioLogged";
+            this.textBoxUsuarioLogged.ReadOnly = true;
             this.textBoxUsuarioLogged.Size = new System.Drawing.Size(227, 28);
             this.textBoxUsuarioLogged.TabIndex = 17;
             this.textBoxUsuarioLogged.TextChanged += new System.EventHandler(this.textBoxUsuarioLogged_TextChanged);
@@ -489,6 +497,7 @@
             // 
             this.textBoxCorreoLogged.Location = new System.Drawing.Point(85, 84);
             this.textBoxCorreoLogged.Name = "textBoxCorreoLogged";
+            this.textBoxCorreoLogged.ReadOnly = true;
             this.textBoxCorreoLogged.Size = new System.Drawing.Size(233, 28);
             this.textBoxCorreoLogged.TabIndex = 15;
             // 

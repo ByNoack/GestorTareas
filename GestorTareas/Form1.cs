@@ -153,58 +153,73 @@ namespace GestorTareas
 
         private void buttonRegistro_Click(object sender, EventArgs e)
         {
-            // Capturar los datos del usuario desde los campos de texto
-            string correo = textBoxCorreoNuevo.Text;
-            string contraseña = textContraseñaNueva.Text;
-            string nombreUsuario = textBoxUsuarioNuevo.Text;
+            try
+            {
+                // Capturar los datos del usuario desde los campos de texto
+                string correo = textBoxCorreoNuevo.Text;
+                string contraseña = textContraseñaNueva.Text;
+                string nombreUsuario = textBoxUsuarioNuevo.Text;
 
-            // Llamar al método en el backend para registrar al usuario
-            // Suponiendo que tienes una instancia de la clase GestorUsuarios llamada gestorUsuarios
-            gestorUsuarios.RegistrarUsuario(correo, contraseña, nombreUsuario);
-            textBoxCorreoNuevo.Text = "";
-            textContraseñaNueva.Text = "";
-            textBoxUsuarioNuevo.Text = "";
-            // Actualizar la interfaz de usuario u ofrecer retroalimentación al usuario, si es necesario
-            MessageBox.Show("Usuario registrado exitosamente.");
-
+                // Llamar al método en el backend para registrar al usuario
+                // Suponiendo que tienes una instancia de la clase GestorUsuarios llamada gestorUsuarios
+                gestorUsuarios.RegistrarUsuario(correo, contraseña, nombreUsuario);
+                textBoxCorreoNuevo.Text = "";
+                textContraseñaNueva.Text = "";
+                textBoxUsuarioNuevo.Text = "";
+                // Actualizar la interfaz de usuario u ofrecer retroalimentación al usuario, si es necesario
+                MessageBox.Show("Usuario registrado exitosamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al registrar usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            // Capturar los datos del usuario desde los campos de texto
-            string correo = textBoxCorreo.Text;
-            string contraseña = textBoxContraseña.Text;
-
-            // Verificar las credenciales del usuario
-            Usuario usuario = gestorUsuarios.IniciarSesion(correo, contraseña);
-           
-            if (usuario != null)
+            try
             {
-                // Las credenciales son válidas, permitir el acceso a la aplicación
-                MessageBox.Show($"¡Bienvenido, {usuario.Username}!");
-                textBoxUsuarioLogged.Text = usuario.Username;
-                textBoxCorreoLogged.Text = usuario.Email;
-                usuarioActual = usuario;
-                
-                List<Tarea> tareasUsuario = controladorTareas.ObtenerTareasPorUsuario(usuario.Username);
+                // Capturar los datos del usuario desde los campos de texto
+                string correo = textBoxCorreo.Text;
+                string contraseña = textBoxContraseña.Text;
 
-                // Limpiar la lista de tareas antes de cargar las nuevas tareas
-                ListaTareas.Items.Clear();
+                // Verificar las credenciales del usuario
+                Usuario usuario = gestorUsuarios.IniciarSesion(correo, contraseña);
 
-                // Agregar las tareas del usuario a la CheckedListBox
-                foreach (Tarea tarea in tareasUsuario)
+                if (usuario != null)
                 {
-                    ListaTareas.Items.Add(tarea.Titulo);
+                    // Las credenciales son válidas, permitir el acceso a la aplicación
+                    MessageBox.Show($"¡Bienvenido, {usuario.Username}!");
+                    textBoxUsuarioLogged.Text = usuario.Username;
+                    textBoxCorreoLogged.Text = usuario.Email;
+                    usuarioActual = usuario;
+
+                    List<Tarea> tareasUsuario = controladorTareas.ObtenerTareasPorUsuario(usuario.Username);
+
+                    // Limpiar la lista de tareas antes de cargar las nuevas tareas
+                    ListaTareas.Items.Clear();
+
+                    // Agregar las tareas del usuario a la CheckedListBox
+                    foreach (Tarea tarea in tareasUsuario)
+                    {
+                        ListaTareas.Items.Add(tarea.Titulo);
+                    }
                 }
-
+                else
+                {
+                    // Las credenciales son inválidas, mostrar un mensaje de error
+                    MessageBox.Show("Correo electrónico o contraseña incorrectos. Por favor, inténtalo de nuevo.");
+                }
+                textBoxCorreo.Text = "";
+                textBoxContraseña.Text = "";
             }
-            else
+            catch (Exception ex)
             {
-                // Las credenciales son inválidas, mostrar un mensaje de error
-                MessageBox.Show("Correo electrónico o contraseña incorrectos. Por favor, inténtalo de nuevo.");
+                MessageBox.Show($"Error al iniciar sesión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
 
         private void textBoxUsuarioLogged_TextChanged(object sender, EventArgs e)
         {
@@ -374,6 +389,78 @@ namespace GestorTareas
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void textBoxBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string criterioBusqueda = textBoxBusqueda.Text;
+
+                if (!string.IsNullOrEmpty(criterioBusqueda))
+                {
+                    // Obtener las tareas filtradas por el criterio de búsqueda
+                    List<Tarea> tareasEncontradas = controladorTareas.BuscarTareas(criterioBusqueda);
+
+                    // Limpiar la CheckedListBox
+                    ListaTareas.Items.Clear();
+
+                    // Agregar las tareas encontradas a la CheckedListBox
+                    foreach (Tarea tarea in tareasEncontradas)
+                    {
+                        ListaTareas.Items.Add(tarea.Titulo, tarea.Estado == "Terminada");
+                    }
+                }
+                else
+                {
+                    // Si el criterio de búsqueda está vacío, mostrar todas las tareas
+                    List<Tarea> tareasUsuario = controladorTareas.ObtenerTareasPorUsuario(usuarioActual.Username);
+
+                    // Limpiar la lista de tareas antes de cargar las nuevas tareas
+                    ListaTareas.Items.Clear();
+
+                    // Agregar las tareas del usuario a la CheckedListBox
+                    foreach (Tarea tarea in tareasUsuario)
+                    {
+                        ListaTareas.Items.Add(tarea.Titulo);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void comboBoxMetodosOrd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string metodoOrdenamiento = comboBoxMetodosOrd.SelectedItem.ToString();
+
+                if (!string.IsNullOrEmpty(metodoOrdenamiento))
+                {
+                    // Ordenar las tareas según el método de ordenamiento seleccionado
+                    controladorTareas.OrdenarTareas(metodoOrdenamiento);
+
+                    // Actualizar la CheckedListBox con las tareas ordenadas
+                    List<Tarea> tareasUsuario = controladorTareas.ObtenerTareasPorUsuario(usuarioActual.Username);
+
+                    // Limpiar la lista de tareas antes de cargar las nuevas tareas
+                    ListaTareas.Items.Clear();
+
+                    // Agregar las tareas del usuario a la CheckedListBox
+                    foreach (Tarea tarea in tareasUsuario)
+                    {
+                        ListaTareas.Items.Add(tarea.Titulo);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
