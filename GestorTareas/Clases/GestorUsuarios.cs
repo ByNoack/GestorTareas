@@ -1,9 +1,9 @@
-﻿using ProgramaGestorTareas.Clases;
+﻿using GestorTareas.Clases;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace ProgramaGestorTareas.Clases
+namespace GestorTareas.Clases
 {
     internal class GestorUsuarios
     {

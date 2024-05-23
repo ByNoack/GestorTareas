@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProgramaGestorTareas.Clases;
+using GestorTareas.Clases;
 
 namespace GestorTareas
 {
     public partial class Form1 : Form
     {
         private GestorUsuarios gestorUsuarios = new GestorUsuarios();
+        private ControladorTareas controladorTareas = new ControladorTareas();
+        private Usuario usuarioActual;
         public Form1()
         {
             InitializeComponent();
@@ -79,6 +81,38 @@ namespace GestorTareas
         {
 
         }
+        private void ListaTareas_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            try
+            {
+                // Obtener el título de la tarea seleccionada
+                string tituloTareaSeleccionada = ListaTareas.Items[e.Index].ToString();
+
+                // Buscar la tarea en la lista de tareas del gestor
+                Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada).FirstOrDefault();
+
+                if (tareaSeleccionada != null)
+                {
+                    // Cambiar el estado de la tarea basado en el nuevo estado del check
+                    if (e.NewValue == CheckState.Checked)
+                    {
+                        tareaSeleccionada.Estado = "Terminada";
+                    }
+                    else if (e.NewValue == CheckState.Unchecked)
+                    {
+                        tareaSeleccionada.Estado = "Por Hacer";
+                    }
+
+                    // Actualizar la tarea en el gestor de tareas
+                    controladorTareas.ActualizarTarea(tareaSeleccionada);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
@@ -162,7 +196,20 @@ namespace GestorTareas
                 // Las credenciales son válidas, permitir el acceso a la aplicación
                 MessageBox.Show($"¡Bienvenido, {usuario.Username}!");
                 textBoxUsuarioLogged.Text = usuario.Username;
-                textBoxCorreoLogged.Text = usuario.Email; 
+                textBoxCorreoLogged.Text = usuario.Email;
+                usuarioActual = usuario;
+                
+                List<Tarea> tareasUsuario = controladorTareas.ObtenerTareasPorUsuario(usuario.Username);
+
+                // Limpiar la lista de tareas antes de cargar las nuevas tareas
+                ListaTareas.Items.Clear();
+
+                // Agregar las tareas del usuario a la CheckedListBox
+                foreach (Tarea tarea in tareasUsuario)
+                {
+                    ListaTareas.Items.Add(tarea.Titulo);
+                }
+
             }
             else
             {
@@ -174,6 +221,118 @@ namespace GestorTareas
 
         private void textBoxUsuarioLogged_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void buttonAgregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string titulo = textBoxTitulo.Text;
+                string descripcion = textBoxDescrip.Text;
+                DateTime fechaVencimiento = PickerFecha.Value;
+                string prioridad = comboBoxPrioridad.SelectedItem?.ToString();
+                string estado = comboBoxEstado.SelectedItem?.ToString();
+
+                if (string.IsNullOrEmpty(titulo) || string.IsNullOrEmpty(descripcion) || string.IsNullOrEmpty(prioridad) || string.IsNullOrEmpty(estado))
+                {
+                    MessageBox.Show("Por favor, complete todos los campos.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (buttonAgregar.Text == "Agregar")
+                {
+                    // Crear una nueva instancia de la tarea con los datos ingresados
+                    Tarea nuevaTarea = new Tarea(titulo, descripcion, fechaVencimiento, prioridad, estado, usuarioActual.Username);
+
+                    // Agregar la nueva tarea al gestor de tareas
+                    controladorTareas.AgregarTarea(nuevaTarea);
+
+                    // Actualizar la CheckedListBox con la nueva tarea
+                    ListaTareas.Items.Add(nuevaTarea.Titulo);
+                }
+                else if (buttonAgregar.Text == "Modificar")
+                {
+                    // Obtener el título de la tarea seleccionada
+                    string tituloTareaSeleccionada = ListaTareas.SelectedItem.ToString();
+
+                    // Buscar la tarea en la lista de tareas del gestor
+                    Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada).FirstOrDefault();
+
+                    if (tareaSeleccionada != null)
+                    {
+                        // Crear una instancia actualizada de la tarea
+                        Tarea tareaActualizada = new Tarea(titulo, descripcion, fechaVencimiento, prioridad, estado, usuarioActual.Username);
+
+                        // Actualizar la tarea en el gestor de tareas
+                        controladorTareas.ActualizarTarea(tareaActualizada);
+
+                        // Actualizar la CheckedListBox
+                        int index = ListaTareas.SelectedIndex;
+                        ListaTareas.Items[index] = tareaActualizada.Titulo;
+                    }
+                }
+
+                // Limpiar los controles de entrada
+                textBoxTitulo.Clear();
+                textBoxDescrip.Clear();
+                PickerFecha.Value = DateTime.Now;
+                comboBoxPrioridad.SelectedIndex = -1;
+                comboBoxEstado.SelectedIndex = -1;
+
+                // Cambiar el texto del botón a "Agregar"
+                buttonAgregar.Text = "Agregar";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void ListaTareas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ListaTareas.SelectedIndex != -1)
+                {
+                    // Obtener el título de la tarea seleccionada
+                    string tituloTareaSeleccionada = ListaTareas.SelectedItem.ToString();
+
+                    // Buscar la tarea en la lista de tareas del gestor
+                    Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada).FirstOrDefault();
+
+                    if (tareaSeleccionada != null)
+                    {
+                        // Mostrar la información de la tarea en los controles
+                        textBoxTitulo.Text = tareaSeleccionada.Titulo;
+                        textBoxDescrip.Text = tareaSeleccionada.Descripcion;
+                        PickerFecha.Value = tareaSeleccionada.FechaVenc;
+                        comboBoxPrioridad.SelectedItem = tareaSeleccionada.Prioridad;
+                        comboBoxEstado.SelectedItem = tareaSeleccionada.Estado;
+
+                        // Cambiar el texto del botón a "Modificar"
+                        buttonAgregar.Text = "Modificar";
+                    }
+                }
+                else
+                {
+                    // Si no hay tarea seleccionada, limpiar los controles
+                    textBoxTitulo.Clear();
+                    textBoxDescrip.Clear();
+                    PickerFecha.Value = DateTime.Now;
+                    comboBoxPrioridad.SelectedIndex = -1;
+                    comboBoxEstado.SelectedIndex = -1;
+
+                    // Cambiar el texto del botón a "Agregar"
+                    buttonAgregar.Text = "Agregar";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

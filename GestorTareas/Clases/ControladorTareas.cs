@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramaGestorTareas.Clases
+namespace GestorTareas.Clases
 {
-    internal class GestorTareas
+    internal class ControladorTareas
     {
 
         private List<Tarea> tareas; // Lista de tareas gestionadas por el gestor
@@ -18,7 +18,7 @@ namespace ProgramaGestorTareas.Clases
         public event EventHandler<TareaEventArgs> TareaActualizada;
         public event EventHandler<TareaEventArgs> TareaEliminada;
 
-        public GestorTareas()
+        public ControladorTareas()
         {
             tareas = new List<Tarea>();
             CargarTareasDesdeArchivo();
@@ -123,7 +123,7 @@ namespace ProgramaGestorTareas.Clases
             {
                 foreach (Tarea tarea in tareas)
                 {
-                    writer.WriteLine($"{tarea.Titulo};{tarea.Descripcion};{tarea.FechaVenc};{tarea.Prioridad};{tarea.Estado}");
+                    writer.WriteLine($"{tarea.Titulo};{tarea.Descripcion};{tarea.FechaVenc};{tarea.Prioridad};{tarea.Estado};{tarea.UsuarioCreador}");
                 }
             }
         }

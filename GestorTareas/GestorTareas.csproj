@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\GestorTareas.cs" />
+    <Compile Include="Clases\ControladorTareas.cs" />
     <Compile Include="Clases\GestorUsuarios.cs" />
     <Compile Include="Clases\Tarea.cs" />
     <Compile Include="Clases\TareaEventArgs.cs" />

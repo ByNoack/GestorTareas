@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramaGestorTareas.Clases
+namespace GestorTareas.Clases
 {
     internal class Usuario
     {

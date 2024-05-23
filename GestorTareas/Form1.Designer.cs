@@ -313,10 +313,15 @@
             this.buttonAgregar.TabIndex = 14;
             this.buttonAgregar.Text = "Agregar";
             this.buttonAgregar.UseVisualStyleBackColor = true;
+            this.buttonAgregar.Click += new System.EventHandler(this.buttonAgregar_Click);
             // 
             // comboBoxEstado
             // 
             this.comboBoxEstado.FormattingEnabled = true;
+            this.comboBoxEstado.Items.AddRange(new object[] {
+            "Por Hacer",
+            "En Progreso",
+            "Terminada"});
             this.comboBoxEstado.Location = new System.Drawing.Point(94, 491);
             this.comboBoxEstado.Name = "comboBoxEstado";
             this.comboBoxEstado.Size = new System.Drawing.Size(303, 29);
@@ -333,7 +338,12 @@
             // 
             // comboBoxPrioridad
             // 
+            this.comboBoxPrioridad.AllowDrop = true;
             this.comboBoxPrioridad.FormattingEnabled = true;
+            this.comboBoxPrioridad.Items.AddRange(new object[] {
+            "Alta",
+            "Media",
+            "Baja"});
             this.comboBoxPrioridad.Location = new System.Drawing.Point(94, 439);
             this.comboBoxPrioridad.Name = "comboBoxPrioridad";
             this.comboBoxPrioridad.Size = new System.Drawing.Size(303, 29);
@@ -414,11 +424,13 @@
             // 
             // ListaTareas
             // 
+            this.ListaTareas.CheckOnClick = true;
             this.ListaTareas.FormattingEnabled = true;
             this.ListaTareas.Location = new System.Drawing.Point(418, 119);
             this.ListaTareas.Name = "ListaTareas";
             this.ListaTareas.Size = new System.Drawing.Size(281, 510);
             this.ListaTareas.TabIndex = 0;
+            this.ListaTareas.SelectedIndexChanged += new System.EventHandler(this.ListaTareas_SelectedIndexChanged);
             // 
             // groupBox2
             // 
