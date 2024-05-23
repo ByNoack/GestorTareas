@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 
 namespace GestorTareas.Clases
 {
@@ -21,78 +22,122 @@ namespace GestorTareas.Clases
 
         public void RegistrarUsuario(string correo, string contraseña, string nombreUsuario)
         {
-            // Verificar si el correo electrónico ya está en uso
-            if (ExisteUsuario(correo))
+            try
             {
-                throw new ArgumentException("El correo electrónico ya está en uso.");
+                // Verificar si el correo electrónico ya está en uso
+                if (ExisteUsuario(correo))
+                {
+                    throw new ArgumentException("El correo electrónico ya está en uso.");
+                }
+
+                // Crear una instancia de Usuario con los datos proporcionados
+                Usuario nuevoUsuario = new Usuario(nombreUsuario, correo, contraseña);
+
+                // Agregar el nuevo usuario a la lista de usuarios
+                listaUsuarios.Add(nuevoUsuario);
+
+                // Guardar la lista actualizada de usuarios en el archivo de texto
+                GuardarUsuariosEnArchivo();
+
             }
-
-            // Crear una instancia de Usuario con los datos proporcionados
-            Usuario nuevoUsuario = new Usuario(nombreUsuario, correo, contraseña);
-
-            // Agregar el nuevo usuario a la lista de usuarios
-            listaUsuarios.Add(nuevoUsuario);
-
-            // Guardar la lista actualizada de usuarios en el archivo de texto
-            GuardarUsuariosEnArchivo();
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private bool ExisteUsuario(string correo)
         {
-            // Buscar si ya existe un usuario con el mismo correo electrónico en la lista de usuarios
-            foreach (Usuario usuario in listaUsuarios)
+            try
             {
-                if (usuario.Email == correo)
+                foreach (Usuario usuario in listaUsuarios)
                 {
-                    return true; // El usuario ya existe
+                    if (usuario.Email == correo)
+                    {
+                        return true; // El usuario ya existe
+                    }
                 }
+                return false; // El usuario no existe
             }
-            return false; // El usuario no existe
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            // Buscar si ya existe un usuario con el mismo correo electrónico en la lista de usuarios
+            
         }
 
         private void CargarUsuariosDesdeArchivo()
         {
-            // Verificar si el archivo de usuarios existe
-            if (File.Exists(rutaArchivoUsuarios))
+            try
             {
-                // Leer los usuarios desde el archivo de texto
-                string[] lineas = File.ReadAllLines(rutaArchivoUsuarios);
-                foreach (string linea in lineas)
+                if (File.Exists(rutaArchivoUsuarios))
                 {
-                    string[] datosUsuario = linea.Split(';');
-                    if (datosUsuario.Length == 3)
+                    // Leer los usuarios desde el archivo de texto
+                    string[] lineas = File.ReadAllLines(rutaArchivoUsuarios);
+                    foreach (string linea in lineas)
                     {
-                        string nombreUsuario = datosUsuario[0];
-                        string correo = datosUsuario[1];
-                        string contraseña = datosUsuario[2];
-                        listaUsuarios.Add(new Usuario(nombreUsuario, correo, contraseña));
+                        string[] datosUsuario = linea.Split(';');
+                        if (datosUsuario.Length == 3)
+                        {
+                            string nombreUsuario = datosUsuario[0];
+                            string correo = datosUsuario[1];
+                            string contraseña = datosUsuario[2];
+                            listaUsuarios.Add(new Usuario(nombreUsuario, correo, contraseña));
+                        }
                     }
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // Verificar si el archivo de usuarios existe
+            
         }
         public Usuario IniciarSesion(string correo, string contraseña)
         {
-            // Buscar si existe un usuario con las credenciales proporcionadas
-            foreach (Usuario usuario in listaUsuarios)
+            try
             {
-                if (usuario.Email == correo && usuario.Password == contraseña)
+                foreach (Usuario usuario in listaUsuarios)
                 {
-                    return usuario; // Las credenciales son válidas, devolver el usuario
+                    if (usuario.Email == correo && usuario.Password == contraseña)
+                    {
+                        return usuario; // Las credenciales son válidas, devolver el usuario
+                    }
                 }
+                return null; // No se encontró ningún usuario con las credenciales proporcionadas
             }
-            return null; // No se encontró ningún usuario con las credenciales proporcionadas
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            // Buscar si existe un usuario con las credenciales proporcionadas
+            
         }
 
         private void GuardarUsuariosEnArchivo()
         {
-            // Escribir los usuarios en el archivo de texto
-            using (StreamWriter writer = new StreamWriter(rutaArchivoUsuarios))
+            try
             {
-                foreach (Usuario usuario in listaUsuarios)
+                using (StreamWriter writer = new StreamWriter(rutaArchivoUsuarios))
                 {
-                    writer.WriteLine($"{usuario.Username};{usuario.Email};{usuario.Password}");
+                    foreach (Usuario usuario in listaUsuarios)
+                    {
+                        writer.WriteLine($"{usuario.Username};{usuario.Email};{usuario.Password}");
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
+            }
+            // Escribir los usuarios en el archivo de texto
+            
         }
     }
 }

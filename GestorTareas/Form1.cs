@@ -316,6 +316,7 @@ namespace GestorTareas
 
                         // Cambiar el texto del botón a "Modificar"
                         buttonAgregar.Text = "Modificar";
+                        labelAgregaTarea.Text = "Modifica una tarea";
                     }
                 }
                 else
@@ -329,6 +330,7 @@ namespace GestorTareas
 
                     // Cambiar el texto del botón a "Agregar"
                     buttonAgregar.Text = "Agregar";
+                    labelAgregaTarea.Text = "Agrega una tarea";
                 }
             }
             catch (Exception ex)

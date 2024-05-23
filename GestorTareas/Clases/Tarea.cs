@@ -72,8 +72,16 @@ namespace GestorTareas.Clases
 
         private int GenerarIdAleatorio()
         {
-            Random random = new Random();
-            return random.Next(1000, 10000); // Generar un ID aleatorio de 4 dígitos
+            try
+            {
+                Random random = new Random();
+                return random.Next(1000, 10000); // Generar un ID aleatorio de 4 dígitos
+            }
+            catch(Exception ex)
+            {
+                return -1;
+            }
+            
         }
     }
 
