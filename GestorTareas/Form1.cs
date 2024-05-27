@@ -205,6 +205,7 @@ namespace GestorTareas
                     {
                         ListaTareas.Items.Add(tarea.Titulo);
                     }
+                    MessageBox.Show("Inicio de sesión exitoso.");
                 }
                 else
                 {
@@ -252,6 +253,7 @@ namespace GestorTareas
 
                     // Actualizar la CheckedListBox con la nueva tarea
                     ListaTareas.Items.Add(nuevaTarea.Titulo);
+                    MessageBox.Show("Tarea agregada exitosamente.");
                 }
                 else if (buttonAgregar.Text == "Modificar")
                 {
@@ -272,6 +274,7 @@ namespace GestorTareas
                         // Actualizar la CheckedListBox
                         int index = ListaTareas.SelectedIndex;
                         ListaTareas.Items[index] = tareaActualizada.Titulo;
+                        MessageBox.Show("Tarea modificada exitosamente.");
                     }
                 }
 
@@ -349,7 +352,8 @@ namespace GestorTareas
                 textBoxUsuarioLogged.Text = "";
                 textBoxCorreoLogged.Text = "";
                 ListaTareas.Items.Clear();
-            }
+                MessageBox.Show("Cierre de sesión exitoso.");
+            }   
             catch(Exception error)
             {
                 MessageBox.Show($"Error: {error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
