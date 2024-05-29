@@ -328,11 +328,12 @@
             this.comboBoxEstado.Items.AddRange(new object[] {
             "Por Hacer",
             "En Progreso",
-            "Terminada"});
+            "Terminado"});
             this.comboBoxEstado.Location = new System.Drawing.Point(94, 491);
             this.comboBoxEstado.Name = "comboBoxEstado";
             this.comboBoxEstado.Size = new System.Drawing.Size(303, 29);
             this.comboBoxEstado.TabIndex = 23;
+            this.comboBoxEstado.SelectedIndexChanged += new System.EventHandler(this.comboBoxEstado_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -355,6 +356,7 @@
             this.comboBoxPrioridad.Name = "comboBoxPrioridad";
             this.comboBoxPrioridad.Size = new System.Drawing.Size(303, 29);
             this.comboBoxPrioridad.TabIndex = 21;
+            this.comboBoxPrioridad.SelectedIndexChanged += new System.EventHandler(this.comboBoxPrioridad_SelectedIndexChanged);
             // 
             // labelPrioridad
             // 
@@ -371,6 +373,7 @@
             this.PickerFecha.Name = "PickerFecha";
             this.PickerFecha.Size = new System.Drawing.Size(325, 28);
             this.PickerFecha.TabIndex = 19;
+            this.PickerFecha.ValueChanged += new System.EventHandler(this.PickerFecha_ValueChanged);
             // 
             // labelFecha
             // 

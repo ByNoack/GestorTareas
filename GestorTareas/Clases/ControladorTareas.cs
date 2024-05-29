@@ -58,12 +58,13 @@ namespace GestorTareas.Clases
         }
 
         // Método para actualizar una tarea en el gestor
-        public void ActualizarTarea(Tarea tareaActualizada)
+        public void ActualizarTarea(Tarea tareaAnterior, Tarea tareaActualizada)
         {
             try {
-                Tarea tarea = tareas.FirstOrDefault(t => t.Titulo == tareaActualizada.Titulo);
+                Tarea tarea = tareas.FirstOrDefault(t => t.Titulo == tareaAnterior.Titulo);
                 if (tarea != null)
                 {
+                    tarea.Titulo = tareaActualizada.Titulo;
                     tarea.Descripcion = tareaActualizada.Descripcion;
                     tarea.FechaVenc = tareaActualizada.FechaVenc;
                     tarea.Prioridad = tareaActualizada.Prioridad;
@@ -85,11 +86,11 @@ namespace GestorTareas.Clases
         }
 
         // Método para buscar tareas según un criterio (palabra del título)
-        public List<Tarea> BuscarTareas(string criterio)
+        public List<Tarea> BuscarTareas(string criterio, string usuario)
         {
             try
             {
-                return tareas.Where(t => t.Titulo.Contains(criterio)).ToList();
+                return tareas.Where(t => t.Titulo.Contains(criterio) && t.UsuarioCreador == usuario).ToList();
             }
             catch (Exception ex) {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

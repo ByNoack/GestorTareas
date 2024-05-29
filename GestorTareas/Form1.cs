@@ -100,11 +100,13 @@ namespace GestorTareas
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
+            if(usuarioActual==null) MessageBox.Show($"Por favor, ingrese sesión antes de agregar una nueva tarea");
 
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
+            if (usuarioActual == null) MessageBox.Show($"Por favor, ingrese sesión antes de agregar una nueva tarea");
 
         }
 
@@ -125,7 +127,7 @@ namespace GestorTareas
                 string tituloTareaSeleccionada = textBoxTitulo.Text;
 
                 // Buscar la tarea en la lista de tareas del gestor
-                Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada).FirstOrDefault();
+                Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada, usuarioActual.Username).FirstOrDefault();
 
                 if (tareaSeleccionada != null)
                 {
@@ -159,15 +161,19 @@ namespace GestorTareas
                 string correo = textBoxCorreoNuevo.Text;
                 string contraseña = textContraseñaNueva.Text;
                 string nombreUsuario = textBoxUsuarioNuevo.Text;
-
+                bool registroExitoso = true;
                 // Llamar al método en el backend para registrar al usuario
-                // Suponiendo que tienes una instancia de la clase GestorUsuarios llamada gestorUsuarios
                 gestorUsuarios.RegistrarUsuario(correo, contraseña, nombreUsuario);
-                textBoxCorreoNuevo.Text = "";
-                textContraseñaNueva.Text = "";
-                textBoxUsuarioNuevo.Text = "";
-                // Actualizar la interfaz de usuario u ofrecer retroalimentación al usuario, si es necesario
-                MessageBox.Show("Usuario registrado exitosamente.");
+                Usuario usuarioRegistrado = gestorUsuarios.IniciarSesion(correo, contraseña);
+                if(usuarioRegistrado==null) registroExitoso=false;
+                if (registroExitoso == true)
+                {
+                    textBoxCorreoNuevo.Text = "";
+                    textContraseñaNueva.Text = "";
+                    textBoxUsuarioNuevo.Text = "";
+                    MessageBox.Show("Usuario registrado exitosamente.");
+                }
+                
             }
             catch (Exception ex)
             {
@@ -205,7 +211,6 @@ namespace GestorTareas
                     {
                         ListaTareas.Items.Add(tarea.Titulo);
                     }
-                    MessageBox.Show("Inicio de sesión exitoso.");
                 }
                 else
                 {
@@ -261,7 +266,7 @@ namespace GestorTareas
                     string tituloTareaSeleccionada = ListaTareas.SelectedItem.ToString();
 
                     // Buscar la tarea en la lista de tareas del gestor
-                    Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada).FirstOrDefault();
+                    Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada, usuarioActual.Username).FirstOrDefault();
 
                     if (tareaSeleccionada != null)
                     {
@@ -269,7 +274,7 @@ namespace GestorTareas
                         Tarea tareaActualizada = new Tarea(titulo, descripcion, fechaVencimiento, prioridad, estado, usuarioActual.Username);
 
                         // Actualizar la tarea en el gestor de tareas
-                        controladorTareas.ActualizarTarea(tareaActualizada);
+                        controladorTareas.ActualizarTarea(tareaSeleccionada, tareaActualizada);
 
                         // Actualizar la CheckedListBox
                         int index = ListaTareas.SelectedIndex;
@@ -306,7 +311,7 @@ namespace GestorTareas
                     string tituloTareaSeleccionada = ListaTareas.SelectedItem.ToString();
 
                     // Buscar la tarea en la lista de tareas del gestor
-                    Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada).FirstOrDefault();
+                    Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada, usuarioActual.Username).FirstOrDefault();
 
                     if (tareaSeleccionada != null)
                     {
@@ -347,10 +352,16 @@ namespace GestorTareas
         {
             try
             {
-                usuarioActual = null;
-
                 textBoxUsuarioLogged.Text = "";
                 textBoxCorreoLogged.Text = "";
+                textBoxTitulo.Text = "";
+                textBoxDescrip.Text = "";
+                PickerFecha.Text = "";
+                comboBoxEstado.Text = "";
+                comboBoxPrioridad.Text = "";
+                usuarioActual = null;
+
+              
                 ListaTareas.Items.Clear();
                 MessageBox.Show("Cierre de sesión exitoso.");
             }   
@@ -373,10 +384,11 @@ namespace GestorTareas
                 string tituloTareaSeleccionada = ListaTareas.Items[e.Index].ToString();
 
                 // Buscar la tarea en la lista de tareas del gestor
-                Tarea tareaSeleccionada = controladorTareas.BuscarTareas(tituloTareaSeleccionada).FirstOrDefault();
+                Tarea tareaAnt = controladorTareas.BuscarTareas(tituloTareaSeleccionada, usuarioActual.Username).FirstOrDefault();
 
-                if (tareaSeleccionada != null)
+                if (tareaAnt != null)
                 {
+                    Tarea tareaSeleccionada = tareaAnt;
                     // Cambiar el estado de la tarea basado en el nuevo estado del check
                     if (e.NewValue == CheckState.Checked)
                     {
@@ -388,7 +400,7 @@ namespace GestorTareas
                     }
 
                     // Actualizar la tarea en el gestor de tareas
-                    controladorTareas.ActualizarTarea(tareaSeleccionada);
+                    controladorTareas.ActualizarTarea(tareaAnt, tareaSeleccionada);
                 }
             }
             catch (Exception ex)
@@ -406,7 +418,7 @@ namespace GestorTareas
                 if (!string.IsNullOrEmpty(criterioBusqueda))
                 {
                     // Obtener las tareas filtradas por el criterio de búsqueda
-                    List<Tarea> tareasEncontradas = controladorTareas.BuscarTareas(criterioBusqueda);
+                    List<Tarea> tareasEncontradas = controladorTareas.BuscarTareas(criterioBusqueda, usuarioActual.Username);
 
                     // Limpiar la CheckedListBox
                     ListaTareas.Items.Clear();
@@ -466,6 +478,24 @@ namespace GestorTareas
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        }
+
+        private void PickerFecha_ValueChanged(object sender, EventArgs e)
+        {
+            if (usuarioActual == null) MessageBox.Show($"Por favor, ingrese sesión antes de agregar una nueva tarea");
+
+        }
+
+        private void comboBoxPrioridad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (usuarioActual == null) MessageBox.Show($"Por favor, ingrese sesión antes de agregar una nueva tarea");
+
+        }
+
+        private void comboBoxEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (usuarioActual == null) MessageBox.Show($"Por favor, ingrese sesión antes de agregar una nueva tarea");
 
         }
     }
